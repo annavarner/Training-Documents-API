@@ -5,11 +5,8 @@
     "description": "An API to list & manage alarm panel training/reference documents built for CSE341",
     "version": "1.0.0"
   },
-  "host": "localhost: 3000",
+  "host": "training-docs.onrender.com",
   "basePath": "/",
-  "schemes": [
-    "http"
-  ],
   "paths": {
     "/": {
       "get": {
@@ -69,16 +66,6 @@
           },
           "500": {
             "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
           }
         }
       }
@@ -474,6 +461,16 @@
           },
           "500": {
             "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api-docs": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
           }
         }
       }
