@@ -1,58 +1,57 @@
-[{
+[
+  {
     "title": "DMP XR-Series Installation Guide",
     "category": "alarm panel",
     "manufacturer": "DMP",
     "model": "XR-Series",
-    "doc-type": "install guide",
+    "docType": "install guide",
     "description": "Installation Guide for XR150/XR550 alarm panel",
     "URL": "https://www.dmp.com/assets/LT-1233.pdf",
-    "date-added": "10/10/2023",
+    "dateAdded": "10/10/2023",
     "user": "Anna"
-},
-{
+  },
+  {
     "title": "DMP XR-Series User Guide",
     "category": "alarm panel",
     "manufacturer": "DMP",
     "model": "XR-Series",
-    "doc-type": "user guide",
+    "docType": "user guide",
     "description": "User Guide for XR150/XR550 alarm panel",
     "URL": "https://www.dmp.com/assets/LT-1278.pdf",
-    "date-added": "10/10/2023",
+    "dateAdded": "10/10/2023",
     "user": "Anna"
-},
-{
+  },
+  {
     "title": "DMP XR-Series Programming Guide",
     "category": "alarm panel",
     "manufacturer": "DMP",
     "model": "XR-Series",
-    "doc-type": "programming guide",
+    "docType": "programming guide",
     "description": "Programming Guide for XR150/XR550 alarm panel",
     "URL": "https://www.dmp.com/assets/LT-1232.pdf",
-    "date-added": "10/10/2023",
+    "dateAdded": "10/10/2023",
     "user": "Anna"
-},
-{
+  },
+  {
     "title": "Telguard TG-7 Quick Install Guide",
     "category": "cellular",
     "manufacturer": "Telguard",
     "model": "TG-7",
-    "doc-type": "install guide",
+    "docType": "install guide",
     "description": "Quick Install Guide for Telguard TG-7",
     "URL": "https://www.telguard.com/-/media/project/oneweb/oneweb/telguard/products/tg7a/document-items/telguard_quickinstall_tg_7_2018.pdf?revision=240e5080-f38a-4214-9c8b-4d662b066a22",
-    "date-added": "10/12/2023",
+    "dateAdded": "10/12/2023",
     "user": "Anna"
-}
-,
-{
+  },
+  {
     "title": "Telguard TG-7 Installation & Operation Guide",
     "category": "cellular",
     "manufacturer": "Telguard",
     "model": "TG-7",
-    "doc-type": "install guide",
+    "docType": "install guide",
     "description": "Installation & Operation Guide for Telguard TG-7",
     "URL": "https://www2.telguard.com/TG-7_Series_Installation_Operation_Guide",
-    "date-added": "10/12/2023",
+    "dateAdded": "10/12/2023",
     "user": "Anna"
-}
-
+  }
 ]

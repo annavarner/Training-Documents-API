@@ -1,0 +1,30 @@
+[
+  {
+    "firstName": "Anna",
+    "lastName": "Varner",
+    "userName": "annav",
+    "password": "password",
+    "authLevel": "1"
+  },
+  {
+    "firstName": "admin",
+    "lastName": "user",
+    "userName": "admin",
+    "password": "adminpassword",
+    "authLevel": "1"
+  },
+  {
+    "firstName": "read-only",
+    "lastName": "user",
+    "userName": "temp",
+    "password": "temppassword",
+    "authLevel": "3"
+  },
+  {
+    "firstName": "read-write",
+    "lastName": "user",
+    "userName": "rwuser",
+    "password": "rwpassword",
+    "authLevel": "2"
+  }
+]
