@@ -7,9 +7,6 @@
   },
   "host": "training-docs.onrender.com",
   "basePath": "/",
-  "schemes": [
-    "http"
-  ],
   "paths": {
     "/": {
       "get": {
