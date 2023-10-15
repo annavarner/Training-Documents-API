@@ -3,14 +3,14 @@ const bodyParser = require("body-parser");
 const app = express();
 const port = process.env.PORT || 3000;
 const mongodb = require("./db/connect");
-// const swaggerUi = require("swagger-ui-express");
-// const swaggerDocument = require("./swagger-output.json");
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("./swagger-output.json");
 const cors = require("cors");
 
 app
   .use(bodyParser.json())
-  // .use("/api-docs", swaggerUi.serve)
-  // .get("/api-docs", swaggerUi.setup(swaggerDocument))
+  .use("/api-docs", swaggerUi.serve)
+  .use("/api-docs", swaggerUi.setup(swaggerDocument))
   .use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader(
