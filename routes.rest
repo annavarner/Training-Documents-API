@@ -1,40 +1,89 @@
 //Local Host
 
 ###Get all documents 
-GET http://localhost:3000/docs
+GET http://localhost:3000/paneldocs
 
 ###Get one document by id 
-GET http://localhost:3000/docs/652abf4ff97bc1962c31a1dd
+GET http://localhost:3000/paneldocs/652b249a1a76ebe384b97392
 
 ###Create document 
-POST http://localhost:3000/docs HTTP/1.1 Content-Type: application/json
+POST http://localhost:3000/paneldocs HTTP/1.1 
+Content-Type: application/json
 
 {
     "title": "How to Address a DMP keypad",
     "category": "alarm panel",
     "manufacturer": "DMP",
     "model": "XR-Series",
-    "doctype": "training",
+    "docType": "training",
     "description": "Instructions for addressing a DMP keypad",
-    "url": "T://emc/programming/keypad-instructions.doc",
-    "date": "10/14/23",
-    "user": "Anna",
+    "URL": "http://www.com/testadddress",
+    "dateAdded": "10/14/23",
+    "user": "Anna"
 }
 
 ### Update Contact 
-PUT http://localhost:3000/docs/ HTTP/1.1 Content-Type: application/json
+PUT http://localhost:3000/paneldocs/652b2abf1a76ebe384b97396/ HTTP/1.1 
+Content-Type: application/json
 
 {
-    "title": "",
-    "category": "",
-    "manufacturer": "",
-    "model": "",
-    "doctype": "",
-    "description": "",
-    "url": "",
-    "date": "",
-    "user": "",
+    "title": "How to Address a DMP keypad",
+    "category": "alarm panel",
+    "manufacturer": "DMP",
+    "model": "XR-Series",
+    "docType": "training",
+    "description": "Instructions for addressing a DMP keypad",
+    "URL": "T://emc/programming/keypad-instructions.doc",
+    "dateAdded": "10/14/23",
+    "user": "Anna"
 }
 
+### Delete a contact
 
-652abf4ff97bc1962c31a1dd
+DELETE http://localhost:3000/paneldocs/652b24131a76ebe384b97391 HTTP/1.1
+
+
+
+//Render Routes
+
+###Get all documents 
+GET http://training-docs.onrender.com/paneldocs
+
+###Get one document by id 
+GET https://training-docs.onrender.com/paneldocs/652b249a1a76ebe384b97392
+
+###Create document 
+POST https://training-docs.onrender.com/paneldocs HTTP/1.1 
+Content-Type: application/json
+
+{
+    "title": "How to Address a DMP keypad",
+    "category": "alarm panel",
+    "manufacturer": "DMP",
+    "model": "XR-Series",
+    "docType": "training",
+    "description": "Instructions for addressing a DMP keypad",
+    "URL": "http://www.com/testadddress",
+    "dateAdded": "10/14/23",
+    "user": "Anna"
+}
+
+### Update Contact 
+PUT https://training-docs.onrender.com/paneldocs/652b2abf1a76ebe384b97396/ HTTP/1.1 
+Content-Type: application/json
+
+{
+    "title": "How to Address a DMP keypad",
+    "category": "alarm panel",
+    "manufacturer": "DMP",
+    "model": "XR-Series",
+    "docType": "training",
+    "description": "Instructions for addressing a DMP keypad",
+    "URL": "T://emc/programming/keypad-instructions.doc",
+    "dateAdded": "10/14/23",
+    "user": "Anna"
+}
+
+### Delete a contact
+
+DELETE https://training-docs.onrender.com/paneldocs/652b24131a76ebe384b97391 HTTP/1.1

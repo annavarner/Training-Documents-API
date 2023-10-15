@@ -3,7 +3,11 @@ const router = express.Router();
 const swaggerDocument = require('../swagger-output.json');
 const swaggerUi = require('swagger-ui-express');
 
-const docsController = require("../controllers/docs");
+router
+    .use("/api-docs", swaggerUi.serve)
+    .get("/api-docs", swaggerUi.setup(swaggerDocument));
+
+const docsController = require("../controllers/paneldocs");
 
 router.get("/", docsController.getAll);
 
@@ -14,8 +18,5 @@ router.post("/", docsController.createDocument);
 router.put("/:id", docsController.updateDocument);
 
 router.delete("/:id", docsController.deleteDocument);
-
-router.use('/api-docs', swaggerUi.serve);
-router.get('/api-docs', swaggerUi.setup(swaggerDocument));
 
 module.exports = router;

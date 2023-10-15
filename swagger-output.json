@@ -7,6 +7,9 @@
   },
   "host": "training-docs.onrender.com",
   "basePath": "/",
+  "schemes": [
+    "http"
+  ],
   "paths": {
     "/": {
       "get": {
@@ -70,7 +73,17 @@
         }
       }
     },
-    "/docs/": {
+    "/paneldocs/api-docs": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/paneldocs/": {
       "get": {
         "description": "",
         "produces": [
@@ -132,7 +145,7 @@
         }
       }
     },
-    "/docs/{id}": {
+    "/paneldocs/{id}": {
       "get": {
         "description": "",
         "produces": [
@@ -223,16 +236,6 @@
           },
           "500": {
             "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/docs/api-docs": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
           }
         }
       }
@@ -370,6 +373,16 @@
         }
       }
     },
+    "/api-docs": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/{id}": {
       "get": {
         "description": "",
@@ -461,16 +474,6 @@
           },
           "500": {
             "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
           }
         }
       }

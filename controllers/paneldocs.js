@@ -5,7 +5,7 @@ const ObjectId = require("mongodb").ObjectId;
 const getAll = async (req, res) => {
   const result = await mongodb
     .getDb()
-    .db("docs")
+    .db("trainingdocs")
     .collection("paneldocs")
     .find();
   result.toArray().then((lists) => {
@@ -18,7 +18,7 @@ const getSingle = async (req, res) => {
   const docId = new ObjectId(req.params.id);
   const result = await mongodb
     .getDb()
-    .db("docs")
+    .db("trainingdocs")
     .collection("paneldocs")
     .findOne({ _id: docId });
   res.setHeader("Content-Type", "application/json");
@@ -32,15 +32,15 @@ const createDocument = async (req, res) => {
     category: req.body.category,
     manufacturer: req.body.manufacturer,
     model: req.body.model,
-    doctype: req.body.docType,
+    docType: req.body.docType,
     description: req.body.description,
-    url: req.body.URL,
-    date: req.body.dateAdded,
+    URL: req.body.URL,
+    dateAdded: req.body.dateAdded,
     user: req.body.user,
   };
   const response = await mongodb
     .getDb()
-    .db("docs")
+    .db("trainingdocs")
     .collection("paneldocs")
     .insertOne(document);
   if (response.acknowledged) {
@@ -68,7 +68,7 @@ const updateDocument = async (req, res) => {
   };
   const response = await mongodb
     .getDb()
-    .db("docs")
+    .db("trainingdocs")
     .collection("paneldocs")
     .replaceOne({ _id: docId }, document);
   console.log(response);
@@ -85,7 +85,7 @@ const deleteDocument = async (req, res) => {
   const docId = new ObjectId(req.params.id);
   const response = await mongodb
     .getDb()
-    .db("docs")
+    .db("trainingdocs")
     .collection("paneldocs")
     .deleteOne({ _id: docId }, true);
   console.log(response);
