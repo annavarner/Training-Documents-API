@@ -19,13 +19,15 @@ const getAll = async (req, res) => {
 //get one document from database
 const getSingle = async (req, res) => {
   const docId = new ObjectId(req.params.id);
-  const result = await mongodb
+  const result = await docSchema.validateAsync(docId);
+  console.log(result);
+  const response = await mongodb
     .getDb()
     .db("trainingdocs")
     .collection("paneldocs")
-    .findOne({ _id: docId });
+    .findOne({ _id: result });
       res.setHeader("Content-Type", "application/json");
-      res.status(200).json(result);
+      res.status(200).json(response);
     };
 
 const createDocument = async (req, res) => {
@@ -90,11 +92,13 @@ const updateDocument = async (req, res) => {
 
 const deleteDocument = async (req, res) => {
   const docId = new ObjectId(req.params.id);
+  const result = await docSchema.validateAsync(docId);
+  console.log(result);
   const response = await mongodb
     .getDb()
     .db("trainingdocs")
     .collection("paneldocs")
-    .deleteOne({ _id: docId }, true);
+    .deleteOne({ _id: result }, true);
   console.log(response);
   if (response.deletedCount > 0) {
     res.status(204).send();
