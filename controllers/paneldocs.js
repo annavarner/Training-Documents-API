@@ -2,6 +2,7 @@ const mongodb = require("../db/connect");
 const ObjectId = require("mongodb").ObjectId;
 
 const { docSchema } = require("../helpers/validation_schema");
+const { idSchema } = require("../helpers/validation_schema");
 
 //get all documents from database
 const getAll = async (req, res) => {
@@ -19,7 +20,7 @@ const getAll = async (req, res) => {
 //get one document from database
 const getSingle = async (req, res) => {
   const docId = new ObjectId(req.params.id);
-  const result = await docSchema.validateAsync(docId);
+  const result = await idSchema.validateAsync(docId);
   console.log(result);
   const response = await mongodb
     .getDb()
@@ -73,7 +74,7 @@ const updateDocument = async (req, res) => {
     date: req.body.dateAdded,
     user: req.body.user,
   };
-  const result = await docSchema.validateAsync(document);
+  const result = await idSchema.validateAsync(document);
   console.log(result);
   const response = await mongodb
     .getDb()
@@ -92,7 +93,7 @@ const updateDocument = async (req, res) => {
 
 const deleteDocument = async (req, res) => {
   const docId = new ObjectId(req.params.id);
-  const result = await docSchema.validateAsync(docId);
+  const result = await idSchema.validateAsync(docId);
   console.log(result);
   const response = await mongodb
     .getDb()

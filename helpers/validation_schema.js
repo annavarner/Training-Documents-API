@@ -12,6 +12,11 @@ const docSchema = Joi.object({
   user: Joi.string().required(),
 });
 
+const idSchema = Joi.object({
+  _id: Joi.string().required().length(24)
+})
+
 module.exports = {
   docSchema,
+  idSchema
 };

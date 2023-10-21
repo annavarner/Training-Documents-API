@@ -40,7 +40,7 @@ Content-Type: application/json
 
 ### Delete a Document
 
-DELETE http://localhost:3000/paneldocs/6533e3d54ac15a142d1d8145 HTTP/1.1
+DELETE http://localhost:3000/paneldocs/6533f88f21ed3ee528af11cb HTTP/1.1
 
 
 
