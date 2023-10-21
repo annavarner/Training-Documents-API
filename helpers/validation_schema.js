@@ -13,7 +13,7 @@ const docSchema = Joi.object({
 });
 
 const idSchema = Joi.object({
-  _id: Joi.string().required().length(24)
+  id: Joi.string().required().length(24)
 })
 
 module.exports = {
