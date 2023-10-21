@@ -1,6 +1,8 @@
 const mongodb = require("../db/connect");
 const ObjectId = require("mongodb").ObjectId;
 
+const { docSchema } = require ('../helpers/validation_schema')
+
 //get all documents from database
 const getAll = async (req, res) => {
   const result = await mongodb
@@ -38,11 +40,13 @@ const createDocument = async (req, res) => {
     dateAdded: req.body.dateAdded,
     user: req.body.user,
   };
+  const result = await docSchema.validateAsync(req.body)
+  console.log(result)
   const response = await mongodb
     .getDb()
     .db("trainingdocs")
     .collection("paneldocs")
-    .insertOne(document);
+    .insertOne(result);
   if (response.acknowledged) {
     res.status(201).json(response);
     console.log("document added");
@@ -66,11 +70,13 @@ const updateDocument = async (req, res) => {
     date: req.body.dateAdded,
     user: req.body.user,
   };
+  const result = await docSchema.validateAsync(req.body)
+  console.log(result)
   const response = await mongodb
     .getDb()
     .db("trainingdocs")
     .collection("paneldocs")
-    .replaceOne({ _id: docId }, document);
+    .replaceOne({ _id: docId }, result);
   console.log(response);
   if (response.modifiedCount > 0) {
     res.status(204).send();
