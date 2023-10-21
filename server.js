@@ -31,8 +31,11 @@ app
   .use(cors())
   .use("/", require("./routes"));
 
-process.on('uncaughtException', (err, origin) => {
-  console.log(process.stderr, `Caught exception: ${err}\n` + `Exception origin: ${origin}`);
+process.on("uncaughtException", (err, origin) => {
+  console.log(
+    process.stderr,
+    `Caught exception: ${err}\n` + `Exception origin: ${origin}`,
+  );
 });
 
 mongodb.initDb((err) => {

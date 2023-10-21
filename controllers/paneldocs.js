@@ -1,7 +1,7 @@
 const mongodb = require("../db/connect");
 const ObjectId = require("mongodb").ObjectId;
 
-const { docSchema } = require ('../helpers/validation_schema')
+const { docSchema } = require("../helpers/validation_schema");
 
 //get all documents from database
 const getAll = async (req, res) => {
@@ -13,10 +13,10 @@ const getAll = async (req, res) => {
   result.toArray((err, lists) => {
     if (err) {
       res.status(400).json({ message: err });
-      }
+    }
     res.setHeader("Content-Type", "application/json");
     res.status(200).json(lists);
-      });
+  });
 };
 //get one document from database
 const getSingle = async (req, res) => {
@@ -29,11 +29,11 @@ const getSingle = async (req, res) => {
     .toArray((err, result) => {
       if (err) {
         res.status(400).json({ message: err });
-        }
-      res.setHeader('Content-Type', 'application/json');
+      }
+      res.setHeader("Content-Type", "application/json");
       res.status(200).json(result[0]);
     });
-    }
+};
 
 const createDocument = async (req, res) => {
   console.log(req.params.id);
@@ -48,8 +48,8 @@ const createDocument = async (req, res) => {
     dateAdded: req.body.dateAdded,
     user: req.body.user,
   };
-  const result = await docSchema.validateAsync(document)
-  console.log(result)
+  const result = await docSchema.validateAsync(document);
+  console.log(result);
   const response = await mongodb
     .getDb()
     .db("trainingdocs")
@@ -78,8 +78,8 @@ const updateDocument = async (req, res) => {
     date: req.body.dateAdded,
     user: req.body.user,
   };
-  const result = await docSchema.validateAsync(document)
-  console.log(result)
+  const result = await docSchema.validateAsync(document);
+  console.log(result);
   const response = await mongodb
     .getDb()
     .db("trainingdocs")
