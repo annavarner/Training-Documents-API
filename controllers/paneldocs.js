@@ -10,10 +10,13 @@ const getAll = async (req, res) => {
     .db("trainingdocs")
     .collection("paneldocs")
     .find();
-  result.toArray().then((lists) => {
+  result.toArray((err, lists) => {
+    if (err) {
+      res.status(400).json({ message: err });
+      }
     res.setHeader("Content-Type", "application/json");
     res.status(200).json(lists);
-  });
+      });
 };
 //get one document from database
 const getSingle = async (req, res) => {
@@ -22,10 +25,15 @@ const getSingle = async (req, res) => {
     .getDb()
     .db("trainingdocs")
     .collection("paneldocs")
-    .findOne({ _id: docId });
-  res.setHeader("Content-Type", "application/json");
-  res.status(200).json(result);
-};
+    .findOne({ _id: docId })
+    .toArray((err, result) => {
+      if (err) {
+        res.status(400).json({ message: err });
+        }
+      res.setHeader('Content-Type', 'application/json');
+      res.status(200).json(result[0]);
+    });
+    }
 
 const createDocument = async (req, res) => {
   console.log(req.params.id);
@@ -40,7 +48,7 @@ const createDocument = async (req, res) => {
     dateAdded: req.body.dateAdded,
     user: req.body.user,
   };
-  const result = await docSchema.validateAsync(req.body)
+  const result = await docSchema.validateAsync(document)
   console.log(result)
   const response = await mongodb
     .getDb()
@@ -70,7 +78,7 @@ const updateDocument = async (req, res) => {
     date: req.body.dateAdded,
     user: req.body.user,
   };
-  const result = await docSchema.validateAsync(req.body)
+  const result = await docSchema.validateAsync(document)
   console.log(result)
   const response = await mongodb
     .getDb()

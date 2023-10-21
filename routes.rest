@@ -4,7 +4,7 @@
 GET http://localhost:3000/paneldocs
 
 ###Get one document by id 
-GET http://localhost:3000/paneldocs/6533e0184ac15a142d1d8144
+GET http://localhost:3000/paneldocs/652b2258b70fb6120dd524ee
 
 ###Create document 
 POST http://localhost:3000/paneldocs HTTP/1.1 
@@ -40,7 +40,7 @@ Content-Type: application/json
 
 ### Delete a Document
 
-DELETE http://localhost:3000/paneldocs/6532ee73838389e9fcb890da HTTP/1.1
+DELETE http://localhost:3000/paneldocs/6533e3d54ac15a142d1d8145 HTTP/1.1
 
 
 
