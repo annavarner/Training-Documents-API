@@ -10,14 +10,12 @@ const getAll = async (req, res) => {
     .db("trainingdocs")
     .collection("paneldocs")
     .find();
-  result.toArray((err, lists) => {
-    if (err) {
-      res.status(400).json({ message: err });
-    }
+  result.toArray().then((lists) => {
     res.setHeader("Content-Type", "application/json");
     res.status(200).json(lists);
   });
 };
+
 //get one document from database
 const getSingle = async (req, res) => {
   const docId = new ObjectId(req.params.id);
@@ -25,15 +23,10 @@ const getSingle = async (req, res) => {
     .getDb()
     .db("trainingdocs")
     .collection("paneldocs")
-    .findOne({ _id: docId })
-    .toArray((err, result) => {
-      if (err) {
-        res.status(400).json({ message: err });
-      }
+    .findOne({ _id: docId });
       res.setHeader("Content-Type", "application/json");
-      res.status(200).json(result[0]);
-    });
-};
+      res.status(200).json(result);
+    };
 
 const createDocument = async (req, res) => {
   console.log(req.params.id);
