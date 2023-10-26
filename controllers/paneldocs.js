@@ -19,40 +19,46 @@ const getAll = async (req, res) => {
 
 //get one document from database
 const getSingle = async (req, res) => {
-  const result = await idSchema.validateAsync(req.params.id);
-  const docId = new ObjectId(result);
-  console.log(docId);
-  const response = await mongodb
-    .getDb()
-    .db("trainingdocs")
-    .collection("paneldocs")
-    .findOne({ _id: docId });
-      res.setHeader("Content-Type", "application/json");
-      res.status(200).json(response);
-    };
+  try {
+    const result = await idSchema.validateAsync(req.params.id);
+    const docId = new ObjectId(result);
+    console.log(docId);
+    const response = await mongodb
+      .getDb()
+      .db("trainingdocs")
+      .collection("paneldocs")
+      .findOne({ _id: docId });
+    res.setHeader("Content-Type", "application/json");
+    res.status(200).json(response);
+	} catch (error) {
+      res.status(400);
+      console.log(error);
+      return res.json(errorFunction(true, "Error getting document"));
+	}
+};
 
 const createDocument = async (req, res) => {
-  console.log(req.params.id);
-  const document = {
-    title: req.body.title,
-    category: req.body.category,
-    manufacturer: req.body.manufacturer,
-    model: req.body.model,
-    docType: req.body.docType,
-    description: req.body.description,
-    URL: req.body.URL,
-    dateAdded: req.body.dateAdded,
-    user: req.body.user,
-  };
-  const result = await docSchema.validateAsync(document);
-  console.log(result);
+    console.log(req.params.id);
+    const result = await docSchema.validateAsync(req.params.id);
+    console.log(result);
+    const document = {
+      title: result.body.title,
+      category: result.body.category,
+      manufacturer: result.body.manufacturer,
+      model: result.body.model,
+      docType: result.body.docType,
+      description: result.body.description,
+      URL: result.body.URL,
+      dateAdded: result.body.dateAdded,
+      user: result.body.user
+    }
   const response = await mongodb
     .getDb()
     .db("trainingdocs")
     .collection("paneldocs")
-    .insertOne(result);
+    .insertOne(document);
   if (response.acknowledged) {
-    res.status(201).json(response);
+    res.status(201).json(document);
     console.log("document added");
   } else {
     res
@@ -62,7 +68,8 @@ const createDocument = async (req, res) => {
 };
 
 const updateDocument = async (req, res) => {
-  const docId = new ObjectId(req.params.id);
+  const result = await idSchema.validateAsync(req.params);
+  const docId = new ObjectId(result);
   const document = {
     title: req.body.title,
     category: req.body.category,
@@ -74,13 +81,12 @@ const updateDocument = async (req, res) => {
     date: req.body.dateAdded,
     user: req.body.user,
   };
-  const result = await idSchema.validateAsync(document);
-  console.log(result);
+  console.log(document);
   const response = await mongodb
     .getDb()
     .db("trainingdocs")
     .collection("paneldocs")
-    .replaceOne({ _id: docId }, result);
+    .replaceOne({ _id: docId }, document);
   console.log(response);
   if (response.modifiedCount > 0) {
     res.status(204).send();
@@ -92,14 +98,15 @@ const updateDocument = async (req, res) => {
 };
 
 const deleteDocument = async (req, res) => {
-  const docId = new ObjectId(req.params.id);
-  const result = await idSchema.validateAsync(docId);
-  console.log(result);
+  const result = await idSchema.validateAsync(req.params.id);
+  const docId = new ObjectId(result);
+
+  console.log(docId);
   const response = await mongodb
     .getDb()
     .db("trainingdocs")
     .collection("paneldocs")
-    .deleteOne({ _id: result }, true);
+    .deleteOne({ _id: docId }, true);
   console.log(response);
   if (response.deletedCount > 0) {
     res.status(204).send();
