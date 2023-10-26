@@ -19,14 +19,14 @@ const getAll = async (req, res) => {
 
 //get one document from database
 const getSingle = async (req, res) => {
-  const docId = new ObjectId(req.params.id);
-  const result = await idSchema.validateAsync(docId);
-  console.log(result);
+  const result = await idSchema.validateAsync(req.params.id);
+  const docId = new ObjectId(result);
+  console.log(docId);
   const response = await mongodb
     .getDb()
     .db("trainingdocs")
     .collection("paneldocs")
-    .findOne({ _id: result });
+    .findOne({ _id: docId });
       res.setHeader("Content-Type", "application/json");
       res.status(200).json(response);
     };
