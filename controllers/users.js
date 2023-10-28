@@ -1,4 +1,4 @@
-const mongodb = require("../db/connect");
+/* const mongodb = require("../db/connect");
 const ObjectId = require("mongodb").ObjectId;
 
 //get all users from database
@@ -97,3 +97,4 @@ module.exports = {
   updateUser,
   deleteUser,
 };
+ */

@@ -1,4 +1,4 @@
-const express = require("express");
+/* const express = require("express");
 const router = express.Router();
 // const swaggerDocument = require('../swagger-output.json');
 // const swaggerUi = require('swagger-ui-express');
@@ -18,4 +18,4 @@ router.delete("/:id", usersController.deleteUser);
 // router.use('/api-docs', swaggerUi.serve);
 // router.get('/api-docs', swaggerUi.setup(swaggerDocument));
 
-module.exports = router;
+module.exports = router; */
