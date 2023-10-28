@@ -56,8 +56,6 @@ app.get("/profile", requiresAuth(), (req, res) => {
   res.send(JSON.stringify(req.oidc.user));
 });
 
-app.get("/paneldocs", requiresAuth());
-
 process.on("uncaughtException", (err, origin) => {
   console.log(
     process.stderr,
