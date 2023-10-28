@@ -19,9 +19,10 @@ const getAll = async (req, res) => {
 
 //get one document from database
 const getSingle = async (req, res) => {
-  try {
-    const result = await idSchema.validateAsync(req.params.id);
-    const docId = new ObjectId(result);
+  // try {
+  //   const result = await idSchema.validateAsync(req.params.id);
+  // } catch (err) {}
+    const docId = new ObjectId(req.params.id);
     console.log(docId);
     const response = await mongodb
       .getDb()
@@ -30,27 +31,22 @@ const getSingle = async (req, res) => {
       .findOne({ _id: docId });
     res.setHeader("Content-Type", "application/json");
     res.status(200).json(response);
-	} catch (error) {
-      res.status(400);
-      console.log(error);
-      return res.json(errorFunction(true, "Error getting document"));
-	}
 };
 
 const createDocument = async (req, res) => {
     console.log(req.params.id);
-    const result = await docSchema.validateAsync(req.params.id);
-    console.log(result);
+    //const result = await docSchema.validateAsync(req.params.id);
+    //console.log([req.params]);
     const document = {
-      title: result.body.title,
-      category: result.body.category,
-      manufacturer: result.body.manufacturer,
-      model: result.body.model,
-      docType: result.body.docType,
-      description: result.body.description,
-      URL: result.body.URL,
-      dateAdded: result.body.dateAdded,
-      user: result.body.user
+      title: req.body.title,
+      category: req.body.category,
+      manufacturer: req.body.manufacturer,
+      model: req.body.model,
+      docType: req.body.docType,
+      description: req.body.description,
+      URL: req.body.URL,
+      dateAdded: req.body.dateAdded,
+      user: req.body.user
     }
   const response = await mongodb
     .getDb()
@@ -68,8 +64,8 @@ const createDocument = async (req, res) => {
 };
 
 const updateDocument = async (req, res) => {
-  const result = await idSchema.validateAsync(req.params);
-  const docId = new ObjectId(result);
+  //const result = await idSchema.validateAsync(req.params.id);
+  const docId = new ObjectId(req.params);
   const document = {
     title: req.body.title,
     category: req.body.category,
@@ -98,8 +94,8 @@ const updateDocument = async (req, res) => {
 };
 
 const deleteDocument = async (req, res) => {
-  const result = await idSchema.validateAsync(req.params.id);
-  const docId = new ObjectId(result);
+  //const result = await idSchema.validateAsync(req.params.id);
+  const docId = new ObjectId(req.params.id);
 
   console.log(docId);
   const response = await mongodb

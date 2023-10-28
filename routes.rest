@@ -5,41 +5,42 @@ GET http://localhost:3000/paneldocs
 
 ###Get one document by id 
 GET http://localhost:3000/paneldocs/652b37c30387940cbf3b7409
+
 ###Create document 
 POST http://localhost:3000/paneldocs HTTP/1.1 
 Content-Type: application/json
 
 {
-    "title": "Removing an account from RPS",
-    "category": "alarm panel",
-    "manufacturer": "Bosch",
+    "title": "Alarmnet Activation",
+    "category": "cellular",
+    "manufacturer": "Alarmnet",
     "model": "",
     "docType": "training",
-    "description": "Instructions for removing a cancelled account from RPS Software",
-    "URL": "http://www.com/RemovefromRPS",
-    "dateAdded": "10/26/2023",
+    "description": "Instructions for activating an alarmnet dialer",
+    "URL": "http://www.com/ActivateAlarmnet",
+    "dateAdded": "10/28/2023",
     "user": "Anna"
 }
 
 ### Update Document 
-PUT http://localhost:3000/paneldocs/652b37c30387940cbf3b7409 HTTP/1.1 
+PUT http://localhost:3000/paneldocs/653d20ee929772dd2722f409 HTTP/1.1 
 Content-Type: application/json
 
 {
-    "title": "Pacom to DMP Program Import",
-    "category": "alarm panel",
-    "manufacturer": "DMP",
-    "model": "XR550",
-    "docType": "training",
-    "description": "Instructions for importing a DMP program for Pacom to DMP Conversion Project",
-    "URL": "T://emc/programming/Import-PacomtoDMP.doc",
-    "dateAdded": "10/26/23",
-    "user": "Mandy"
+  "title": "Alarmnet Activation",
+  "category": "cellular dialer",
+  "manufacturer": "Alarmnet",
+  "model": "",
+  "docType": "training",
+  "description": "Instructions for activating an alarmnet dialer",
+  "URL": "http://www.com/ActivateAlarmnet",
+  "dateAdded": "10/28/2023",
+  "user": "Anna"
 }
 
 ### Delete a Document
 
-DELETE http://localhost:3000/paneldocs/6532d9ce6468ea420f786cd5 HTTP/1.1
+DELETE http://localhost:3000/paneldocs/652b31bb4f1009f5f51897e2 HTTP/1.1
 
 
 
