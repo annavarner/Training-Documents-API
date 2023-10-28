@@ -24,7 +24,7 @@ const getSingle = async (req, res) => {
     // } catch (err) {}
     const docId = new ObjectId(req.params.id);
     if (!docId) {
-      res.status(400).send({ message: 'Document ID cannot be empty!' });
+      res.status(400).send({ message: "Document ID cannot be empty!" });
       return;
     }
     console.log(docId);
@@ -35,8 +35,7 @@ const getSingle = async (req, res) => {
       .findOne({ _id: docId });
     res.setHeader("Content-Type", "application/json");
     res.status(200).json(response);
-  }
-  catch (err) {
+  } catch (err) {
     res.status(500).json(err);
   }
 };
@@ -55,8 +54,8 @@ const createDocument = async (req, res) => {
       description: req.body.description,
       URL: req.body.URL,
       dateAdded: req.body.dateAdded,
-      user: req.body.user
-    }
+      user: req.body.user,
+    };
     const response = await mongodb
       .getDb()
       .db("trainingdocs")
@@ -70,9 +69,8 @@ const createDocument = async (req, res) => {
         .status(500)
         .json(response.error || "Errors occured while creating the document");
     }
-  }
-  catch (err) {
-    res.status(500).json(err)
+  } catch (err) {
+    res.status(500).json(err);
   }
 };
 
@@ -81,7 +79,7 @@ const updateDocument = async (req, res) => {
     //const result = await idSchema.validateAsync(req.params.id);
     const docId = new ObjectId(req.params.id);
     if (!docId) {
-      res.status(400).send({ message: 'Document ID cannot be empty!' });
+      res.status(400).send({ message: "Document ID cannot be empty!" });
       return;
     }
     const document = {
@@ -96,24 +94,24 @@ const updateDocument = async (req, res) => {
       user: req.body.user,
     };
     console.log(document);
-  }
-  catch (err) {
+    const response = await mongodb
+      .getDb()
+      .db("trainingdocs")
+      .collection("paneldocs")
+      .replaceOne({ _id: docId }, document);
+    console.log(response);
+    if (response.modifiedCount > 0) {
+      res.status(204).send();
+    } else {
+      res
+        .status(500)
+        .json(
+          response.error || "An error occurred while updating the document.",
+        );
+    }
+  } catch (err) {
     res.status(500).json(err);
   }
-  const response = await mongodb
-    .getDb()
-    .db("trainingdocs")
-    .collection("paneldocs")
-    .replaceOne({ _id: docId }, document);
-  console.log(response);
-  if (response.modifiedCount > 0) {
-    res.status(204).send();
-  } else {
-    res
-      .status(500)
-      .json(response.error || "An error occurred while updating the document.");
-  }
-
 };
 
 const deleteDocument = async (req, res) => {
@@ -133,11 +131,13 @@ const deleteDocument = async (req, res) => {
     } else {
       res
         .status(500)
-        .json(response.error || "An error occurred while deleting the document");
+        .json(
+          response.error || "An error occurred while deleting the document",
+        );
     }
   } catch (err) {
     res.status(500).json(err);
-  };
+  }
 
   module.exports = {
     getAll,
@@ -145,5 +145,5 @@ const deleteDocument = async (req, res) => {
     createDocument,
     updateDocument,
     deleteDocument,
-  }
+  };
 };

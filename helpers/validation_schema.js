@@ -13,10 +13,10 @@ const docSchema = Joi.object({
 });
 
 const idSchema = Joi.object({
-  id: Joi.string().hex().required()
-})
+  id: Joi.string().hex().required(),
+});
 
 module.exports = {
   docSchema,
-  idSchema
+  idSchema,
 };
