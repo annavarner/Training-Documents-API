@@ -9,7 +9,9 @@ const swaggerUi = require("swagger-ui-express");
 router.use("/paneldocs", require("./paneldocs"));
 router.use("/users", require("./users"));
 
-module.exports = router;
+
 
 router.use("/api-docs", swaggerUi.serve);
 router.get("/api-docs", swaggerUi.setup(swaggerDocument));
+
+module.exports = router;

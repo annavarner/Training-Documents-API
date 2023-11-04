@@ -1,21 +1,23 @@
 const express = require("express");
 const router = express.Router();
-// const swaggerDocument = require('../swagger-output.json');
-// const swaggerUi = require('swagger-ui-express');
 
 const usersController = require("../controllers/users");
 
-router.get("/", usersController.getAll);
+//router.get("/", usersController.createUser)
 
-router.get("/:id", usersController.getSingle);
+router.get("/allusers", usersController.getAllUsers);
+
+router.get("/:id", usersController.getSingleUser);
+
+//router.get("/:id", usersController.getByEmail());
 
 router.post("/", usersController.createUser);
 
+//router.post("/login", usersController.login());
 router.put("/:id", usersController.updateUser);
+//router.put("/:id", usersController.changePassword());
 
-router.delete("/:id", usersController.deleteUser);
-
-// router.use('/api-docs', swaggerUi.serve);
-// router.get('/api-docs', swaggerUi.setup(swaggerDocument));
+router.delete("/:id", usersController.deleteUser)
+//router.delete("/:id", usersController.removeUser());
 
 module.exports = router;
